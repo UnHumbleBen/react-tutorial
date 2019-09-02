@@ -1,26 +1,80 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Table from './Table'
+import Form from './Form'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    animes: [
+      {
+        title: 'Dr. Stone',
+        studio: 'TMS Entertainment',
+      },
+      {
+        title: 'Fire Force',
+        studio: 'David Production',
+      },
+      {
+        title: 'Demon Slayer: Kimetsu no Yaiba',
+        studio: 'Ufotable',
+      },
+      {
+        title: 'Lord El-Melloi II\'s Case Files',
+        studio: 'Troyca',
+      },
+    ],
+  }
+
+  removeAnime = index => {
+    const { animes } = this.state
+
+    this.setState({
+      animes: animes.filter((anime, i) => {
+        return i !== index
+      }),
+    })
+  }
+
+  render() {
+    const { animes } = this.state
+    return (
+      <div className="container">
+        <Table animeData={animes} removeAnime={this.removeAnime} />
+        <Form handleSubmit={this.handleSubmit} />
+      </div >
+    )
+  }
+
+  handleSubmit = anime => {
+    this.setState({ animes: [...this.state.animes, anime] })
+  }
 }
 
-export default App;
+// class App extends Component {
+//   state = {
+//     data: [],
+//   }
+
+//   componentDidMount() {
+//     const url =
+//       'https://en.wikipedia.org/w/api.php?action=opensearch&search=Seona&format=json&origin=*'
+
+//     fetch(url)
+//       .then(result => result.json())
+//       .then(result => {
+//         this.setState({
+//           data: result,
+//         })
+//       })
+//   }
+
+//   render() {
+//     const { data } = this.state
+
+//     const result = data.map((entry, index) => {
+//       return <li key={index}>{entry}</li>
+//     })
+//     return <ul>{result}</ul>
+//   }
+// }
+
+export default App
