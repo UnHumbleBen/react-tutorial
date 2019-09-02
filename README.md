@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Based on Tania Rascia's [tutorial](https://www.taniarascia.com/getting-started-with-react/)
 
-* [View Project](https://unhumbleben.github.io/react-tutorial)
+* [View Project](https://unhumbleben.github.io/react-tutorial/)
 
 ## Available Scripts
 
